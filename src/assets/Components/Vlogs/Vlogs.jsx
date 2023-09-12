@@ -4,7 +4,7 @@ import Vlog from "../Vlog/Vlog";
 import { PropTypes } from 'prop-types';
 
 
-const Vlogs = ( {handleBookmark}) => {
+const Vlogs = ( {handleBookmark,readingTimeHendler}) => {
     const [vlogs,setVlogs] = useState ([])
     useEffect ( ()=> {
         fetch ('Vlogs.json')
@@ -18,14 +18,17 @@ const Vlogs = ( {handleBookmark}) => {
                 vlogs.map (vlog =>  <Vlog
                      key={vlog.id} 
                      blog={vlog}
-                     handleBookmark= {handleBookmark}> 
+                     handleBookmark= {handleBookmark}
+                     readingTimeHendler= {readingTimeHendler}> 
+                     
                      </Vlog>)
             }
         </div>
     );
 };
 Vlogs.propTypes= {
-    handleBookmark :PropTypes.func.isRequired
+    handleBookmark :PropTypes.func.isRequired,
+    readingTimeHendler :PropTypes.func.isRequired
 }
 
 export default Vlogs;

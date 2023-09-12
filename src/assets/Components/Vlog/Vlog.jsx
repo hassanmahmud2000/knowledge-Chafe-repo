@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-const Vlog = ({ blog,handleBookmark}) => {
+const Vlog = ({ blog,handleBookmark,readingTimeHendler}) => {
     const  {vlog_title,cover,author_img,author_name,reading_time,hash_tags} = blog
     // console.log(blog);
     return (
@@ -26,9 +26,7 @@ const Vlog = ({ blog,handleBookmark}) => {
                     hash_tags.map ( (tag,idx) =>  <span key={idx}> <a href="">{ tag }</a></span>)
                  }
             </p>
-            <p>
-                <a className='text-blue-600' href="">Read More</a>
-            </p>
+            <button onClick={ () =>readingTimeHendler (reading_time)} className='text-blue-800 underline'>Mark as read</button>
             <hr />
             
         </div>
@@ -37,6 +35,7 @@ const Vlog = ({ blog,handleBookmark}) => {
 
 Vlog.propTypes = {
     blog :PropTypes.object.isRequired,
-    handleBookmark :PropTypes.func
+    handleBookmark :PropTypes.func,
+    readingTimeHendler :PropTypes.func
 }
 export default Vlog;
